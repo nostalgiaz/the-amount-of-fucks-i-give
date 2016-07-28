@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>The amount of fucks I give</title>
+    <meta name="viewport" content="width=450"/>
+    <link href='https://fonts.googleapis.com/css?family=Courgette|Roboto+Mono' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="http://dougtesting.net/elements/javascript/Winwheel.js"></script>
+    <script type="text/javascript" src="http://dougtesting.net/elements/javascript/TweenMax.min.js"></script>
+
+    <style>
+        .container {
+            font-family: 'Courgette', sans-serif;
+            height: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 20px 0 40px 0;
+        }
+
+        h1 > span {
+            font-family: 'Roboto Mono', sans-serif;
+            display: block;
+        }
+
+        .wheel {
+            position: relative;
+        }
+
+        .wheel:before {
+            content: '▼';
+            font-size: 50px;
+            z-index: 100;
+            color: #1b1b1b;
+            position: absolute;
+            top: -25px;
+            left: calc(50% - 25px);
+            width: 50px;
+        }
+
+        footer {
+            font-family: 'Roboto Mono', sans-serif;
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <h1>The amount of <span>FUCKS</span> I give</h1>
+    <div class="wheel">
+        <canvas id="canvas" width="434" height="434"></canvas>
+    </div>
+</div>
+<footer>
+    <a href="https://github.com/nostalgiaz">Tia</a> doesn't give a fuck. Neither does <a href="https://www.linkedin.com/in/marcomusi">Musi</a>.
+</footer>
+<script>
+    var colors = [
+        '#40A4D7', '#33BEB7', '#ACC422', '#FECC2F', '#F8A227', '#F76120', '#DB3937', '#EE6579', '#A064DB',
+        '#40A4D7', '#33BEB7', '#ACC422', '#FECC2F', '#F8A227', '#F76120', '#DB3937', '#EE6579', '#A064DB'
+    ];
+    var wheel = new Winwheel({
+        numSegments: colors.length,
+        outerRadius: 212,
+        centerX: 217,
+        centerY: 219,
+        textFontSize: 20,
+        textOrientation: 'vertical',
+        textAlignment: 'outer',
+        textMargin: 30,
+        segments: colors.map(function (color) {return {fillStyle: color, text: '0'}}),
+        animation: {
+            type: 'spinToStop',
+            duration: 5,
+            spins: 8
+        }
+    });
+
+    wheel.animation.spins = 3;
+    wheel.startAnimation();
+</script>
+</body>
+</html>
